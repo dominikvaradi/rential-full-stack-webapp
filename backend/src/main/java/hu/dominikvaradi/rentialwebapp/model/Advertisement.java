@@ -1,5 +1,7 @@
 package hu.dominikvaradi.rentialwebapp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -9,8 +11,7 @@ import javax.validation.constraints.Size;
 public class Advertisement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", updatable = false)
-    @NotNull
+    @Column(name = "ID")
     private Long id;
 
     @Column(name = "Name")
@@ -23,7 +24,18 @@ public class Advertisement {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "User_ID")
     @NotNull
+    @JsonIgnore
     private User advertiserUser;
+
+    public Advertisement() {
+
+    }
+
+    public Advertisement(String name, String description, User advertiserUser) {
+        this.name = name;
+        this.description = description;
+        this.advertiserUser = advertiserUser;
+    }
 
     public void setId(Long id) {
         this.id = id;
