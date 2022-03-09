@@ -1,0 +1,29 @@
+<div class="container" *ngIf="currentUserId">
+    <div class="row mt-2">
+        <div class="col-12 text-center">
+            <a class="btn btn-primary" [routerLink]="['/createadvertisement']">New Advertisement</a>
+        </div>
+        
+    </div>
+    <div class="row mt-3">
+        <div class="col-sm-12 col-lg-6 col-xl-4 mb-3" *ngFor="let advertisement of advertisements">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title m-0">{{advertisement.name}}</h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-subtitle text-muted mb-1">Id: {{advertisement.id}}</h6>
+
+                    <div class="overflow-auto" style="height: 150px;">
+                        <p class="card-text">{{advertisement.description}}</p>
+                    </div>
+
+                    <div class="text-end mt-2">
+                        <a [routerLink]="['/editadvertisement', advertisement.id]" class="btn btn-primary me-2">Edit</a>
+                        <a (click)="deleteAdvertisement(advertisement.id)" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

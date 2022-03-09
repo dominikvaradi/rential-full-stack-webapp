@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <div class="login-form bg-light mt-4 p-4">
+                <form class="col-12" *ngIf="isAdvertisementEditable" name="form" (ngSubmit)="form.form.valid && onSubmit()" #form="ngForm" novalidate>
+                    <div class="text-center">
+                        <h4 class="text-center">Edit Advertisement</h4>
+                    </div>
+
+                    <div class="form-group mb-2">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" [(ngModel)]="advertisement.name" required minlength="5" maxlength="30" #name="ngModel" />
+
+                        <div class="alert alert-danger my-1" *ngIf="name.errors && form.submitted">
+                            <div *ngIf="name.errors?.['required']">Name is required</div>
+                            <div *ngIf="name.errors?.['minlength']">Name must be at least 5 characters</div>
+                            <div *ngIf="name.errors?.['maxlength']">Name must be at most 30 characters</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group my-2">
+                        <label for="description">Description</label>
+                        <textarea type="text" class="form-control" name="description" [(ngModel)]="advertisement.description" #description="ngModel" autosize></textarea>
+                    </div>
+
+                    <div class="form-group mt-4 text-center">
+                        <button class="btn btn-primary btn-block ce me-3" type="submit">Save</button>
+                        <button class="btn btn-secondary btn-block ce" [routerLink]="['/myadvertisements']" type="button">Cancel</button>
+                    </div>
+
+                    <div class="form-group mt-2" *ngIf="form.submitted && isEditFailed">
+                        <div class="alert alert-warning">Edit failed!<br />{{ errorMessage }}</div>
+                    </div>
+                </form>
+
+                <div class="alert alert-success mt-3" *ngIf="isSuccessful">Edit successful!</div>
+            </div>
+        </div>
+    </div>
+</div>
