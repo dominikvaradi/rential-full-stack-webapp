@@ -1,2 +1,2 @@
 # rential-full-stack-webapp
-Apartman hírdetős full-stack weboldal Java Spring Boot backendden és Angular frontenden írva.
+Apartman hírdetős full-stack webalkalmazás Java Spring Boot backenden és Angular frontenden írva.
