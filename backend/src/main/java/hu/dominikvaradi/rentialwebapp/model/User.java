@@ -48,7 +48,7 @@ public class User {
     @NotBlank
     private String lastname;
 
-    @OneToMany(mappedBy = "advertiserUser",
+    @OneToMany(mappedBy = "user",
                 cascade = { CascadeType.ALL },
                 fetch = FetchType.LAZY)
     @JsonIgnore

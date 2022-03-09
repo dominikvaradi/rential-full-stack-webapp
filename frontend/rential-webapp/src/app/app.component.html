@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a routerLink="home" class="navbar-brand ms-3">Rential</a>
+
+  <ul class="navbar-nav me-auto">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/home']" routerLinkActive="active">Home</a>
+    </li>
+
+    <li class="nav-item" *ngIf="isLoggedIn">
+      <a class="nav-link" [routerLink]="['/myadvertisements']" routerLinkActive="active">My advertisements</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ms-auto" *ngIf="!isLoggedIn">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/register']" routerLinkActive="active">Register</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/login']" routerLinkActive="active">Login</a>
+    </li>
+  </ul>
+
+  <span class="navbar-text ms-auto me-2 text-info" *ngIf="isLoggedIn">Logged in as {{username}}</span>
+
+  <ul class="navbar-nav me-2" *ngIf="isLoggedIn">
+    <li class="nav-item">
+      <a href class="nav-link" (click)="logout()">Log out</a>
+    </li>
+  </ul>
+</nav>
+
+<router-outlet></router-outlet>

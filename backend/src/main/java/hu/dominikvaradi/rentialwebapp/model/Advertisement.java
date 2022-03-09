@@ -21,11 +21,11 @@ public class Advertisement {
     @Column(name = "Description")
     private String description;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "User_ID")
     @NotNull
     @JsonIgnore
-    private User advertiserUser;
+    private User user;
 
     public Advertisement() {
 
@@ -34,7 +34,7 @@ public class Advertisement {
     public Advertisement(String name, String description, User advertiserUser) {
         this.name = name;
         this.description = description;
-        this.advertiserUser = advertiserUser;
+        this.user = advertiserUser;
     }
 
     public void setId(Long id) {
@@ -61,11 +61,11 @@ public class Advertisement {
         this.description = description;
     }
 
-    public User getAdvertiserUser() {
-        return advertiserUser;
+    public User getUser() {
+        return user;
     }
 
-    public void setAdvertiserUser(User advertiserUser) {
-        this.advertiserUser = advertiserUser;
+    public void setUser(User advertiserUser) {
+        this.user = advertiserUser;
     }
 }
