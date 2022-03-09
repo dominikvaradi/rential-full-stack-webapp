@@ -1,2 +1,2 @@
 # rential-full-stack-webapp
-An apartment renting full stack web-app with Java Spring back-end and React front-end
+Apartman hírdetős full-stack weboldal Java Spring Boot backendden és Angular frontenden írva.
